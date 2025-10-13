@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/img/icon.svg" width="20%"></p>
+
 # TinyTag - create labels for a very specific need
 
 > [!IMPORTANT]
