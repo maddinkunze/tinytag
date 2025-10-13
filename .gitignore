@@ -9,6 +9,9 @@ wheels/
 # Virtual environments
 .venv
 
+# Python lock
+.python-version
+
 # OS specific files
 .DS_Store
 Thumbs.db
