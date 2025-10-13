@@ -47,7 +47,7 @@ If you need to label custom components that are not covered by my predefined com
 - [Pillow](https://pypi.org/project/pillow/)
 - [Design&Print 2 (Android)](https://play.google.com/store/apps/details?id=com.brother.ptouch.designandprint2)
 - [P-Touch Cube Power Adapter](https://www.thingiverse.com/thing:6910533)
-- Fonts: [Greenscreen](https://www.dafont.com/green-screen.font), [PressStart2P](https://www.dafont.com/press-start-2p.font), [Roboto](https://www.dafont.com/roboto.font)
+- Fonts: [Greenscreen](https://www.dafont.com/green-screen.font), [PressStart2P](https://www.dafont.com/press-start-2p.font), [Roboto](https://www.dafont.com/roboto.font), [Another Typewriter](https://www.dafont.com/another-typewriter.font) (only used for the icon)
 
 ### Other (potentially relevant) resources I found but did not use:
 
