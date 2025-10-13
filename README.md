@@ -20,7 +20,7 @@ This is a tool for the very specific use-case of printing multiple tiny labels o
 
 - cannot print in rotated orientation (characters will be stacked vertically instead of side-by-side)
 - a maximum of 5 text fields
-- limitted fonts
+- limited fonts
 
 TinyTag does not print the label itself, it merely creates an image that perfectly fits the resolution of the printer (to avoid scaling artifacts) which can then be printed by the respective app.
 
