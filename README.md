@@ -26,7 +26,7 @@ This is a tool for the very specific use-case of printing multiple tiny labels o
 
 TinyTag does not print the label itself, it merely creates an image that perfectly fits the resolution of the printer (to avoid scaling artifacts) which can then be printed by the respective app.
 
-<p align="center"><img src="docs/img/label_example.png" width="20%", style="image-rendering: pixelated">&nbsp;<img src="doc/img/printed_example.jpg" width="70%"></p>
+<p align="center"><img src="docs/img/label_example.png" width="15%", style="image-rendering: pixelated">&nbsp;<img src="docs/img/container_example.jpg" width="40.3%">&nbsp;<img src="docs/img/containers_example.jpg" width="39.85%"></p>
 
 In the case of the P-Touch Cube, the "horizontal" resolution is 64px (180dpi on 9mm print width) and the "vertical" resolution is unlimited (180dp on unlimited length) when looking at the label with the printed text upright.
 
