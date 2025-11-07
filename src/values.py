@@ -20,6 +20,7 @@ class Size(list, Enum):
     SMD_I0402 = ["I:{0402}", "M:{1005}"]
     SMD_I0603 = ["I:{0603}", "M:{1608}"]
     SMD_I0805 = ["I:{0805}", "M:{2012}"]
+    SMD_I1008 = ["I:{1008}", "M:{2520}"]
     SMD_I1206 = ["I:{1206}", "M:{3216}"]
     SMD_I1210 = ["I:{1210}", "M:{3225}"]
     SMD_I1812 = ["I:{1812}", "M:{4532}"]
@@ -31,6 +32,7 @@ class Size(list, Enum):
     SMD_M1005 = SMD_I0402
     SMD_M1608 = SMD_I0603
     SMD_M2012 = SMD_I0805
+    SMD_M2520 = SMD_I1008
     SMD_M3216 = SMD_I1206
     SMD_M3225 = SMD_I1210
     SMD_M4532 = SMD_I1812
