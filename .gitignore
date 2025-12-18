@@ -15,3 +15,6 @@ wheels/
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# Exported labels
+data/label.png
