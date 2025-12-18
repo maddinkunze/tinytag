@@ -51,6 +51,48 @@ class Size(list, Enum):
 class Component:
     def get_image(self, config: DrawConfig) -> Image: ...
 
+class Label(Component):
+    def __init__(self, *lines: str, normalize: float=0, align: float=0.5):
+        """
+        Setting `normalize` will interpolate between all lines having the same font size (1) and all lines being the same width (0).
+        Setting `align` will align the lines horizontally: 0 = left, 0.5 = center, 1 = right.
+        """
+        self.lines = lines
+        self.normalize = normalize
+        self.align = align
+
+    def get_image(self, config: DrawConfig) -> Image:
+        width = config.width_px
+        font_default = config.get_value_font()
+
+        scales = []
+        for line in self.lines:
+            *_, w, h = font_default.getbbox(line)
+            scales.append(width / w)
+
+        fsize_scale = min(scales) if scales else 0
+
+        fonts = []
+        offsets = []
+        height = 0
+        for line, width_scale in zip(self.lines, scales):
+            scale = self.normalize * fsize_scale + (1 - self.normalize) * width_scale
+            font = config.get_value_font(scale)
+            *_, w, h = font.getbbox(line)
+            if height:
+                height += config.gap_text_px
+            offsets.append(((width - w) * self.align, height))
+            height += h
+            fonts.append(font)
+            
+        img = new_image("1", (width, height), color="white")
+        draw = ImageDraw(img)
+
+        for line, font, (x, y) in zip(self.lines, fonts, offsets):
+            draw.text((x, y), line, font=font)
+
+        return img
+
 class ValuedComponent(Component):
     def __init__(self, value: str, size: Size):
         self.value = value
