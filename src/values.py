@@ -1,5 +1,6 @@
 from enum import Enum
 from typing import Iterable
+from abc import abstractmethod
 from PIL.Image import Image, new as new_image
 from PIL.ImageDraw import ImageDraw
 
@@ -49,7 +50,9 @@ class Size(list, Enum):
 
 
 class Component:
-    def get_image(self, config: DrawConfig) -> Image: ...
+    @abstractmethod
+    def get_image(self, config: DrawConfig) -> Image:
+        raise NotImplementedError()
 
 class Label(Component):
     def __init__(self, *lines: str, normalize: float=0, align: float=0.5):
@@ -85,7 +88,7 @@ class Label(Component):
             height += h
             fonts.append(font)
             
-        img = new_image("1", (width, height), color="white")
+        img = new_image("1", (width, round(height)), color="white")
         draw = ImageDraw(img)
 
         for line, font, (x, y) in zip(self.lines, fonts, offsets):
@@ -98,6 +101,7 @@ class ValuedComponent(Component):
         self.value = value
         self.size = size
 
+    @abstractmethod
     def get_image(self, config):
         width = config.width_px
 
@@ -138,7 +142,8 @@ class ValuedComponent(Component):
             all_widths.append(widths)
             all_heights.append(heights)
 
-        img = new_image("1", (width, height_value + sum(max(h) + config.gap_text_px for h in all_heights)), color="white")
+        _height = round(height_value + sum(max(h) + config.gap_text_px for h in all_heights))
+        img = new_image("1", (width, _height), color="white")
         draw = ImageDraw(img)
         draw.text(((width-width_value)/2, 0), value, font=font_value)
 
@@ -162,7 +167,9 @@ class ValuedComponent(Component):
         return img
 
     @property
-    def _unit(self) -> str: ...
+    @abstractmethod
+    def _unit(self) -> str|None:
+        raise NotImplementedError()
 
     @property
     def _subtexts(self) -> Iterable[str]:
